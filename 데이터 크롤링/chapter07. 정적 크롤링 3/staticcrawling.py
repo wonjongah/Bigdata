@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
-hankyung_url = 'https://search.hankyung.com/apps.frm/search.news?query=%EC%BD%94%EB%A1%9C%EB%82%98&mediaid_clust=HKPAPER,HKCOM&page=1'
+hankyung_url = 'https://search.hankyung.com/apps.frm/search.news?query=%EC%BD%94%EB%A1%9C%EB%82%98&mediaid_clust=HKPAPER,HKCOM&page=4'
 raw = requests.get(hankyung_url)
 
 soup = BeautifulSoup(raw.text, "html.parser") # 문자열 타입 HTML(raw.text)를 HTML 코드로 변환
