@@ -41,3 +41,88 @@ import csv
 의 형태로 임포트해 사용한다.
 
 파이썬으로 csv 파일을 작성할 때는 행 단위로 작성한다는 점을 기억해야 한다.
+
+writer, reader 두 객체를 사용해 csv 파일을 작성하고 읽을 수 있다.
+
+파일을 닫는 코드까지 작성한 후 소스코드 실행을 권장한다. 파일을 닫는 코드 없이 계속 실행하면 파일이 겹치면서 에러가 발생할 수 있다.
+
+
+
+```python
+# writerow() 기본 코드
+wtr.writerow([값1, 값2, 값3, ...])
+```
+
+
+
+ex) writer 
+
+```python
+import csv
+
+# 작성할 example.csv 파일을 생성해 f에 저장
+# newline 옵션으로 한 줄씩 건너 뛰는 현상 해결
+f = open("./example.csv", "w", newline= "")
+
+# csv 파일을 작성하는 객체 변수 wtr 생성
+wtr = csv.writer(f)
+
+# 열 제목 작성
+wtr.writerow(["이름", "나이", "언어"])
+
+# 데이터 생성
+all_name = ["길동", "철수", "영희"]
+all_age = [10, 20, 30]
+all_language = ["파이썬", "C", "자바"]
+
+# 각 행에 데이터 작성
+for i in range(3):
+    name = all_name[i]
+    age = all_age[i]
+    language = all_language[i]
+    wtr.writerow([name, age, language])
+
+f.close()
+```
+
+
+
+ex) reader 
+
+```python
+import csv
+
+# 일거올 example.csv 파일을 변수 f에 저장
+f = open("./example.csv", "r")
+
+# csv 파일의 모든 데이터 변수를 rdr에 저장
+rdr = csv.reader(f)
+
+# rdr의 첫 번째는 건너뜀(열 제목)
+next(rdr)
+
+# 이중리스트 형태로 되어 있는 rdr을 한 요소씩 출력
+for row in rdr:
+    print(row)
+
+f.close()
+```
+
+
+
+ex) append
+
+```python
+import csv
+
+# 추가모드 "a"
+f = open("./example.csv", "a", newline="")
+
+wtr = csv.writer(f)
+
+wtr.writerow(["바둑", 40, "파이썬"])
+wtr.writerow(["오목", 34, "C"])
+
+f.close()
+```
+
