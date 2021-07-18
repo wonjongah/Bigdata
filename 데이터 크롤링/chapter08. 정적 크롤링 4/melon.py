@@ -42,6 +42,8 @@ box = soup.find("tbody")
 all_singer = box.find_all("div", {"class":"ellipsis rank02"})
 all_title = box.find_all("div", {"class":"ellipsis rank01"})
 
+print(genre + "의 TOP 50곡")
+
 for singer, title in zip(all_singer, all_title):
     count += 1
-    print(count, title.find("a").text + " - " + singer.find("a").text)
+    print(str(count) + "위. " + title.find("a").text + " - " + singer.find("a").text)
